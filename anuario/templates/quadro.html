@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+  <h1 class="titulo"> Quadro de Avisos </h1>
+  <hr>
+
+  <div class="board" id="quadro">
+
+    {% for p in postits %}
+    
+        
+    <div class="crescer {% if p.folha == 'F' %} folha {% else %} postit {% endif %} align-self-center">
+      {% if p.author == user %}
+        <div class="postitButton justify-content-center " style="position:relative; top:0px;">
+          <a style="font-size:0.75em; padding:0;" class="btn text-white bg-danger shadow"  href="{% url 'postit_delete' pk=p.pk %}"> EXCLUIR</a>
+          <a style="font-size:0.75em; padding:0;" class="btn text-white bg-success shadow" href="{% url 'postit_edit' pk=p.pk %} "> EDITAR </a>
+        </div>
+      {% endif %}
+      
+      {{p.text | safe }}
+      
+    </div>
+    
+    {% endfor %}
+    
+  </div>
+
+  {% if user.is_authenticated %}
+  <div class="d-flex justify-content-center">
+    <a class="btn btn-outline-black text-white bg-success btn-floating m-2 shadow" href="{% url 'new_postit' %} "> Adicionar </a>  
+  </div>
+  {% endif %}
+
+
+
+  <hr>
+  <h1 class="titulo"> Últimas Notícias </h1>  
+  <hr>
+  
+  <div class="d-flex flex-wrap">
+  
+  {% for p in news %}
+
+    <div class="card m-3 crescer " style="width: 30vw;">
+      <img src="media/{{p.capa}}" class="card-img-top" style='height: 15vw;'>
+      <div class="card-body">
+        <h5 class="card-title">{{p.title}} </h5>
+        <h6 class="card-subtitle mb-2 text-muted" style=""> {{p.subtitle}} </h6>
+        <p class="card-text"> {{p.publish_date}} </p>
+        
+        <div class="d-flex justify-content-between" style="">
+          
+          <a href="{% url 'news_detail' pk=p.pk %}" class="card-link btn btn-primary ">Ler mais</a>
+          
+        </div>
+          
+      </div>
+    </div>
+
+  {% endfor %}
+
+  </div>
+
+
+  <hr>
+  <h1 class="titulo"> Postagens Recentes </h1>
+  <hr>
+
+  <div class="d-flex flex-wrap">
+  
+  {% for p in posts %}
+
+    <div class="card m-3 crescer " style="width: 30vw;">
+      <div class="card-body">
+        <h5 class="card-title">{{p.title}} </h5>
+        <h6 class="card-subtitle mb-2 text-muted" style=""> {{p.subtitle}} </h6>
+        <p class="card-text"> {{p.publish_date}} </p>
+        
+        <div class="d-flex justify-content-between" style="">
+          
+          <a href="{% url 'post_detail' pk=p.pk %}" class="card-link btn btn-primary ">Ler mais</a>
+          <div class="perfil-icon"> <a href="{% url 'aluno_posts' pk=p.aluno.pk %}" class="linkSemDec perfil-icon">
+            <img src="/media/{{p.aluno.foto}}" class="perfil-icon-img border border-2 border-secondary" >
+            <h6 style="margin: 0 0.5em;"> {{p.author}} </h6>
+          </a> </div>
+          
+        </div>
+          
+      </div>
+    </div>
+
+  {% endfor %}
+
+  </div>
+
+
+
+  <hr>
+  <h1 class="titulo"> Pontuação das Casas </h1>
+
+  <img src="https://user-images.githubusercontent.com/84053584/161307229-b7a99e29-e98e-4860-9c93-3c947fee8cb5.png" class="brasao crescer" style="width: 30%; margin-left: auto; margin-right: auto; filter: drop-shadow(10px 10px 3px rgb(0 0 0 / 30%));" > 
+  <div class="d-flex" style="justify-content: space-evenly;">
+    <h4> Yawaretê </h4>
+    <h4> Maracá </h4>
+    <h4> Warapi </h4>
+    <h4> Karanká </h4>
+  </div>  
+  <br>
+  <h5 class="subtitulo" style="margin-left: auto; margin-right: auto;"> Algum Dia? 😢 </h5>
+
+{% endblock %}

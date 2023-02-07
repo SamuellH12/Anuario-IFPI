@@ -1,0 +1,82 @@
+{% extends 'aluno_detail_base.html' %}
+{% load blog_extras %}
+
+{% block detail %}
+
+  <!-- GALERIA -->
+
+  <h1 class="titulo"> Galeria </h1>
+
+  {% if aluno == alunoUser %}
+    <div class="d-flex justify-content-center">
+      <a class="btn btn-outline-black text-white bg-success btn-floating m-2 shadow " href="{% url 'new_foto' %}"> Nova Foto </a>
+    </div>
+  {% endif %}
+
+  <div id="expandedImg" class="bg-dark" style="display: none;">
+    <button onclick="this.parentElement.style.display='none'" class="btn btn-outline-black text-white bg-dark btn-floating m-2 shadow "> X </button>
+    <img src="">
+    <h6 id="expandedLegenda" class="text-white titulo" > exemplo </h6>
+    
+    {% if aluno == alunoUser %}
+      <div class="d-flex justify-content-center">
+        <a class="btn btn-outline-black text-white bg-danger btn-floating m-2 shadow" onclick="confirmarDelete()"> EXCLUIR Foto </a>
+        <a class="btn btn-outline-black text-white bg-success btn-floating m-2 shadow" onclick="chamarEdit()"> EDITAR Foto </a>
+      </div>
+    {% endif %}
+    
+  </div>
+
+
+  <div class='galeria-lista' > 
+  {% for a in fotos %}
+  
+    <div class="foto-icon"> 
+      <img src= "/media/{{a.foto}}" alt="{{a.descricao}}" id="{{a.id}}" onclick="showGalery(this);">
+    </div>
+  
+  {% endfor %}
+  </div>
+
+
+
+
+<!-- JAVA SCRIPT -->
+
+<script>
+  document.getElementById('pfotos').classList.add( "activeMenu"); 
+  
+    
+  function showGalery(img) 
+  {
+    var expandImg = document.getElementById("expandedImg");
+    var legenda = document.getElementById("expandedLegenda");
+    
+    expandImg.children[1].src = img.src;
+    legenda.innerHTML = img.alt;
+    
+    expandImg.style.display = "block";
+    expandImg.children[3].children[0].setAttribute("onclick", "confirmarDelete("+ img.id +")" ); 
+    expandImg.children[3].children[1].setAttribute("onclick", "chamarEdit("+ img.id +")" ); 
+  }
+
+
+  function confirmarDelete(num) {
+
+    if( window.confirm("Você tem certeza de que deseja fazer isso?") )
+    {
+      console.log("Id = "+num)
+      window.location.replace("{% url 'foto_delete' pk=0 %}".replace('0', num) );
+    }
+
+  }
+
+  function chamarEdit(num) 
+  {
+    window.location.replace("{% url 'foto_edit' pk=0 %}".replace('0', num) );
+  }
+  
+</script>
+
+{% endblock %}
+

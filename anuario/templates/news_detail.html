@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load blog_extras %}
+
+{% block content %}
+
+{% if post.author == user %}
+  <div class="d-flex justify-content-center">
+    <a class="btn btn-outline-black text-white bg-danger btn-floating m-2 shadow"  href="{% url 'post_delete' pk=post.pk %}"> EXCLUIR Post </a>
+    <a class="btn btn-outline-black text-white bg-success btn-floating m-2 shadow" href="{% url 'news_edit' pk=post.pk %} "> EDITAR Post </a>
+  </div>
+
+  {% if post.publish_date %} {% else %}
+    <h6 class="subtitulo"> Este post ainda está privado, para torná-lo público poste ele no botão abaixo: </h6>
+    <a class="btn btn-outline-black text-white bg-success btn-floating m-2 shadow" href="{% url 'post_publish' pk=post.pk %} "> <h3>PUBLICAR Post</h3> </a>
+  {% endif %}
+
+{% endif %}
+
+<div class="p-3" style="background-image: url('/media/{{post.capa}}');"">
+  
+  <div class="perfil-icon"> <a href="{% url 'aluno_posts' pk=aluno.pk %}" class="linkSemDec perfil-icon">
+    <img src="/media/{{aluno.foto}}" class="perfil-icon-img border border-2 border-secondary" >
+    <h5 style="margin: 0 0.5em;"> {{post.author}} </h5>
+  </a> </div>
+  
+  <h1> {{post.title}} </h1>
+  <h2> {{post.subtitle}} </h2>
+  <h6 style="margin: 0;"> {{post.publish_date}} </h6>
+</div>
+
+<hr style="margin-top: 0;">
+
+<div style="padding: 1em;" class="turmaDesc meiaPag">
+  {{ post.text | safe }}
+</div>
+
+<hr>
+
+<div class="d-flex justify-content-left">
+  <a class="btn btn-outline-black text-white bg-success btn-floating m-2 shadow" href="{% url 'aluno_posts' pk=aluno.pk %}"> Mais posts de {{post.author}} </a>
+</div>
+
+{% endblock %}

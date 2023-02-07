@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load blog_extras %}
+
+{% block content %}
+
+<script src="https://cdn.tiny.cloud/1/jinbrnaqgilezjiwnmjy297gmj2zgqt9cdxnq97jcw6yg44h/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+<script>
+    tinymce.init({
+      selector: ".tinymce",
+      plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table textcolor visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed linkchecker a11ychecker tinymcespellchecker permanentpen powerpaste advtable advcode editimage tinycomments tableofcontents footnotes mergetags autocorrect typography inlinecss',
+      toolbar: 'undo redo | blocks fontfamily fontsize | forecolor backcolor | bold italic underline strikethrough | link image media table | align lineheight | checklist numlist bullist indent outdent | emoticons charmap CODE | removeformat',
+      toolbar_mode: 'wrap',
+      tinycomments_mode: 'embedded',
+      tinycomments_author: 'Author name',
+      spellchecker_language: 'pt_BR',
+      mergetags_list: [
+        { value: 'First.Name', title: 'First Name' },
+        { value: 'Email', title: 'Email' },
+      ]
+    });
+  </script>
+
+<div class="p-5">
+
+    <form method="POST" class="post-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-outline-black text-white bg-dark btn-floating m-1">Save</button>
+    </form>
+
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,34 @@
+.body
+{
+    background-color: #26292e;
+    color: white;
+    padding: 15vh 10vw;
+}
+
+input
+{
+    background: transparent;
+    border: transparent;
+}
+
+
+.loginForm
+{
+    height: auto;
+    width: 40%;
+    padding: 2vw 2vw;
+    margin: 0 auto;
+    border-radius: 10%;
+}
+
+.logoDiv
+{
+    align-items: center;
+    margin: auto 1vh;
+}
+
+.logo
+{
+    margin: auto 25%;
+    width: 50%;
+}

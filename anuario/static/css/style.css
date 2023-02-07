@@ -1,0 +1,460 @@
+body
+{
+  display:flex; 
+  flex-direction:column; 
+  height:100vh; 
+  margin:0;
+
+
+  
+  _background-image: url("https://live.staticflickr.com/3652/3578616870_c920f1b221_c.jpg");
+  _background-size: 100%;
+  _background-position: 20% 40%;
+  _background-attachment: fixed;
+}
+
+nav {
+  
+}
+
+footer
+{
+  margin-top:auto; 
+  width: 100vw;
+}
+
+.navbar-nav a {
+  font-size: 1.25em;
+}
+
+.titulo {
+    margin: 1em 0.5em;
+}
+
+.subtitulo {
+    margin: 0em 0.5em;
+}
+
+.turma-lista {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.turma-icon {
+  text-align: center;
+  transition: transform .3s;
+  border-radius: 4%;
+  background-color:  #c7c7c7;
+  margin: 1em;
+}
+
+.turma-icon:hover {
+    transform: scale(1.1);
+}
+
+.turma-icon img {
+  height:13vw; 
+  width: 26vw;
+  border-radius: 4% 4% 0 0;
+  object-fit: cover;
+}
+
+.icon-simbolo {
+  margin-right: 1%; 
+  height: 8vh;
+}
+
+.aluno-lista {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.aluno-icon {
+  text-align: center;
+  transition: transform .3s;
+  margin: 1em;
+  width: 15vw;
+}
+
+.aluno-icon:hover {
+  transform: scale(1.1);
+}
+
+.aluno-icon img {
+  object-fit: cover;
+  border-radius: 10%;
+  width: 15vw;
+  height: 15vw;
+}
+
+.aluno-icon p {
+  font-size: 0.6em;
+}
+
+.galeria-lista {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.foto-icon {
+  text-align: center;
+  transition: transform .3s;
+  margin: 1em;
+  width: 20vw; 
+  height: 20vw;
+}
+
+.foto-icon:hover {
+  transform: scale(1.1);
+}
+
+.foto-icon img {
+  object-fit: cover;
+  border-radius: 10%;
+  width: 20vw; 
+  height: 20vw;
+}
+
+.linkSemDec
+{
+    text-decoration: none;
+    color: inherit;
+}
+
+.linkSemDec:hover
+{
+    text-decoration:underline;
+    color: inherit;
+}
+
+.perfil
+{
+  display: flex;
+  align-items: center;
+  padding: 0 0%;
+  align-self: center;
+}
+
+.fotoPerfil
+{
+    width: 20vw;
+    height: 20vw;
+    margin: 2vw;
+    object-fit: cover;
+    border-radius: 100%;
+    transition: transform .3s;
+    flex-shrink: 0;
+}
+
+
+.fotoPerfil:hover
+{
+    transform: scale(1.1);
+}
+
+.crescer{
+  transition: transform .3s;
+}
+
+.crescer:hover { 
+  transform: scale(1.05);
+}
+
+
+.perfil-icon{
+  align-items: center;
+  display: flex;
+}
+
+.perfil-icon-img {
+  width: 2.5em;
+  height: 2.5em;
+  object-fit: cover;
+  border-radius: 100%;
+}
+
+.profileMenu {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: white; #d6d6d6;
+  border-radius: 2vw; 0vw 0vw 0vw;
+}
+
+.profileMenu li {
+  float: left;
+}
+
+.profileMenu li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.profileMenu li a:hover:not(.activeMenu) {
+  background-color: #ababab;
+}
+
+.activeMenu {
+  border-radius: 2vw;
+  background-color: #04AA6D;
+}
+
+.quemP {
+    text-align: center;
+    width: 20vw;
+}
+
+
+.turmaBanner img{  
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 85vh;
+}
+
+.turmaBanner {
+  position: relative;
+}
+
+.turmaBanner .nomeDaTurma {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 20%;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 1) );
+  text-align: center;
+  display: flex;  
+  flex-direction:column; 
+  
+}
+
+.turmaBanner .nomeDaTurma h1 {
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.turmaDesc p {
+  margin: 0;
+  margin-bottom: 0.5em; 
+  text-indent: 2em;
+}
+
+#expandedImg img {
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  height: 85vh;
+  
+}
+#expandedImg {
+  width: 100vw;
+}
+
+
+.meiaPag {
+  margin-right: 10vw;
+  margin-left: 10vw;
+  border-right: 1px solid #dddd;
+  border-left: 1px solid #dddd; 
+}
+
+.board {
+  width: 70vw;
+  margin: 0 auto 0 auto;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/c/c6/Blackboard.png");
+  background-size: cover;
+  border: 1em solid #c36e28;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding: 2em;
+}
+
+.folha {
+  background-image: url("https://anuario-ifpi.samuellh12.repl.co/media/images/fotos/10_dofbhI6.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  height: 44vw;
+  width: 28vw;
+  padding: 1vw 1vw 1vw 3vw;
+}
+
+.postit {
+  background-image: url("https://i.pinimg.com/originals/25/08/16/250816e40d33f791160e9a148c59a358.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  height: 20vw;
+  width: 20vw;
+  padding: 3.5vw 2.2vw 1vw 1.2vw;
+}
+
+.postit p, .folha p {
+  margin: 0;  
+}
+
+.postit .postitButton, .folha .postitButton{
+  display: none;
+}
+
+.postit:hover .postitButton, .folha:hover .postitButton {
+  display: flex;
+}
+
+.cardText4l
+{
+    height: 6em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+}
+
+pre {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    border-left: 3px solid #f36d33;
+    color: #666;
+    page-break-inside: avoid;
+    font-family: monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 1.6em;
+    max-width: 100%;
+    overflow: auto;
+    padding: 1em 1.5em;
+    display: block;
+    word-wrap: break-word;
+}
+
+p code, li code {
+  color: #4d4d4d;
+  background: #dedede;
+  word-wrap: break-word;
+  box-decoration-break: clone;
+  padding: .1rem .3rem .2rem;
+  border-radius: .2rem;
+}
+
+/* ---------------------------- */
+
+@media (max-width: 990px) {
+
+
+  .turma-icon img {
+    height:30vw; 
+    width: 60vw;
+  }
+
+  .foto-icon {
+    width:30vw;
+    height:30vw;
+  }
+
+  .foto-icon img {
+    width:30vw;
+    height:30vw;
+  }
+
+  nav h3 {
+    font-size: 3vh;
+  }
+
+  nav {
+    font-size: 1.5vh;
+  }
+
+  footer {
+    font-size: 1.5vh;
+  }
+
+  .nav-button {
+    height: 6vh;
+    width: 8vh;
+  }
+
+  .nav-button span {
+    font-size: 2.5vh;
+  }
+
+  .turmaBanner img{ 
+    width: 100vw;  
+    height: auto;
+  }
+
+.profileMenu li {
+  align-items: center;
+}
+
+.profileMenu li a{
+  font-size: 3vw; 
+  width: 20vw;
+  height: 8vh;
+}
+
+  #expandedImg img {
+  width: 100vw;
+  height: auto;
+  }
+
+  .aluno-icon img{
+    width: 25vw;
+    height: 25vw;
+  }
+
+  .aluno-icon{
+    width: 25vw;
+  }
+
+  .aluno-icon h6 {
+    font-size: 1.5em;
+  }
+
+  .turmaDesc {
+    font-size: 1.5em;
+  }
+
+  .meiaPag {
+    margin-right: 0;
+    margin-left: 0;
+    border: 0;
+  }
+
+  .navbar-nav a {
+    font-size: 1.75em;
+    padding: 0.5em;
+  }
+
+  .board {
+    width: 90vw;
+  }
+
+  .postit {
+    height: 35vw;
+    width: 35vw;
+    padding: 6.5vw 4vw 1vw 1.2vw;
+  }
+
+  .folha {
+    height: 60vw;
+    width: 40vw;
+  }
+  
+}
+
+.tox-notifications-container {
+    display: none !important;
+}

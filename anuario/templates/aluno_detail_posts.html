@@ -1,0 +1,46 @@
+{% extends 'aluno_detail_base.html' %}
+{% load blog_extras %}
+
+{% block detail %}
+
+  <h1 class="titulo"> Postagens </h1>
+
+  {% if aluno == alunoUser %}
+    <div class="d-flex justify-content-center">
+      <a class="btn btn-outline-black text-white bg-success btn-floating m-2 shadow " href="{% url 'new_post' %}"> Novo Post </a>
+    </div>
+  {% endif %}
+
+  <div class="d-flex flex-wrap">
+  
+  {% for p in posts %}
+
+    <div class="card m-3 crescer " style="width: 30vw;">
+      <div class="card-body">
+        <h5 class="card-title">{{p.title}} </h5>
+        <h6 class="card-subtitle mb-2 text-muted" style=""> {{p.subtitle}} </h6>
+        <p class="card-text"> {{p.publish_date}} </p>
+        
+        <div class="d-flex justify-content-between" style="">
+          
+          <a href="{% url 'post_detail' pk=p.pk %}" class="card-link btn btn-primary ">Ler mais</a>
+          <div class="perfil-icon"> <a href="{% url 'aluno_posts' pk=p.aluno.pk %}" class="linkSemDec perfil-icon">
+            <img src="/media/{{p.aluno.foto}}" class="perfil-icon-img border border-2 border-secondary" >
+            <h6 style="margin: 0 0.5em;"> {{p.author}} </h6>
+          </a> </div>
+          
+        </div>
+          
+      </div>
+    </div>
+
+  {% endfor %}
+
+  </div>
+
+
+<script> document.getElementById('pposts').classList.add( "activeMenu"); </script>
+
+
+{% endblock %}
+

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load blog_extras %}
+
+{% block content %}
+
+  <div class="perfil">
+
+    <img src="/media/{{aluno.foto}}" class="fotoPerfil shadow border border-2 border-secondary">
+    <div> 
+      
+      <a class="page-link" href="{% url 'turma_detail' pk=aluno.turma.pk %}">
+        <h4 class="m-0"> {{aluno.turma}} </h4>
+      </a>
+      
+      <h2 class="m-0"> {{aluno}} </h2>
+      <h6 class="m-0"> {{aluno.user}} </h6>
+      <h5 class="m-0"> {{aluno.bio}} </h5>
+      {% if aluno.reporter %} <h5 class="m-1"> <ion-icon name="newspaper"></ion-icon> Repórter </h5> {% endif %}
+      {% if aluno.validado == False %} <div class="alert alert-danger d-inline-flex"> <h5> <ion-icon name="alert-circle-outline"></ion-icon> Usuário não validado! </h5> </div> {% endif %}
+    </div>
+
+  </div>
+
+  <!-- Profile above ^ // v menu & posts under  -->
+
+  <div>
+
+    <ul class="profileMenu border-top border-bottom">
+      <li><a id='pdesc'  href="{% url 'aluno_detail' pk=aluno.pk %}"> <strong> Descrição </strong></a></li>
+      <li><a id='pfotos' href="{% url 'aluno_fotos'  pk=aluno.pk %}"> <strong> Galeria   </strong></a></li>
+      <li><a id='pposts' href="{% url 'aluno_posts'  pk=aluno.pk %}"> <strong> Blog      </strong></a></li>
+    </ul>
+    
+  </div>
+
+
+  {% block detail %}
+  {% endblock %}
+
+
+
+{% endblock %}
+

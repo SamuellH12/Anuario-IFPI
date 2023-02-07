@@ -1,0 +1,24 @@
+{% extends 'aluno_detail_base.html' %}
+{% load blog_extras %}
+
+{% block detail %}
+
+
+  <!--  DESCRIÇÃO   -->
+  {% if aluno == alunoUser %}
+    <div class="d-flex justify-content-center">
+      <a class="btn btn-outline-black text-white bg-success btn-floating m-2 shadow " href="{% url 'aluno_edit' pk=aluno.pk %}">Editar</a>
+    </div>
+  {% endif %}
+
+<br>
+  
+  <div style="padding: 1em;" class="turmaDesc meiaPag">
+    {{ aluno.descricao | safe }}
+  </div>
+
+
+<script> document.getElementById('pdesc').classList.add( "activeMenu"); </script>
+
+{% endblock %}
+

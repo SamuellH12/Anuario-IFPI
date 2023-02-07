@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load blog_extras %}
+
+{% block content %}
+
+
+  <h2 class="titulo"> Notícias Recentes:  </h2> 
+<hr>
+
+  <div class="d-flex flex-wrap">
+  
+  {% for p in news %}
+
+    <div class="card m-3 crescer " style="width: 30vw;">
+      <img src="media/{{p.capa}}" class="card-img-top" style='height: 15vw;'>
+      <div class="card-body">
+        <h5 class="card-title">{{p.title}} </h5>
+        <h6 class="card-subtitle mb-2 text-muted" style=""> {{p.subtitle}} </h6>
+        <p class="card-text"> {{p.publish_date}} </p>
+        
+        <div class="d-flex justify-content-between" style="">
+          
+          <a href="{% url 'news_detail' pk=p.pk %}" class="card-link btn btn-primary ">Ler mais</a>
+          
+        </div>
+          
+      </div>
+    </div>
+
+  {% endfor %}
+
+  </div>
+
+
+  <hr>
+  <h2 class="titulo" > Manchete: </h2>
+
+  <div class="bg-dark text-white turmaBanner">
+
+    <img src= "/media/{{manchete.capa}}" class="" style="" >
+
+    <div class="d-flex justify-content-center nomeDaTurma" > 
+      <h2 class="m-0" >{{manchete.title}}</h2> 
+      <h4 class="subtitulo">{{manchete.subtitle}}</h4>
+    </div>
+    
+  </div>
+
+
+
+  {% if user.is_authenticated and alunoUser.reporter %}
+    <div class="d-flex justify-content-center">
+      <a class="btn btn-outline-black text-white bg-success btn-floating m-2 shadow " href="{% url 'new_news' %}"> Nova Notícia </a>
+    </div>
+  {% endif %}
+
+{% endblock %}
+

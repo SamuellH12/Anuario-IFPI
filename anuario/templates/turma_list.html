@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+  <h1 class="titulo"> Lista de Turmas Formadas </h1>
+
+
+  {% for ano in turmas %}
+    <hr>
+    <h2 class='subtitulo'> {{ano.ano}} </h2>
+    <hr>
+    <div class='turma-lista' > 
+
+    {% for turma in ano.lista %}
+  
+      <div class='turma-icon shadow' >
+        <a class="page-link" href="{% url 'turma_detail' pk=turma.pk %}">
+    
+          <img src= "media/{{turma.foto}}" class="" >
+          <h3> {{turma}} </h3>
+    
+        </a>
+      </div>
+    
+    {% endfor %}
+
+    </div>
+    <br><br>
+  {% endfor %}
+
+
+  <h1 class="titulo"> Lista de Turmas Atuais </h1>
+  
+  {% for ano in turmasC %}
+    <hr>
+    <h2 class='subtitulo'> {{ano.ano}} </h2>
+    <hr>
+    <div class='turma-lista' > 
+
+    {% for turma in ano.lista %}
+  
+      <div class='turma-icon shadow' >
+        <a class="page-link" href="{% url 'turma_detail' pk=turma.pk %}">
+    
+          <img src= "media/{{turma.foto}}" class="" >
+          <h3> {{turma}} </h3>
+    
+        </a>
+      </div>
+    
+    {% endfor %}
+
+    </div>
+    <br><br>
+  {% endfor %}
+
+
+
+{% endblock %}
