@@ -1,4 +1,4 @@
-# Acces the test verision of the site [here](https://anuario-ifpi.samuellh12.repl.co/)
+# Acces the site [here](https://anuario-ifpi.samuellh12.repl.co/)
 
 # Python on Replit
 
